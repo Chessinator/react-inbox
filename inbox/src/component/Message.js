@@ -34,7 +34,7 @@ const Message = ({ message, checkBox, changeStar}) => {
 
   const labelCheck = () => {
     if (message.labels.length > 0) {
-      return message.labels.map((label) => <MessageLabel label={label} />);
+      return message.labels.map((label) => <MessageLabel label={label} key={message.labels.indexOf(label)} />);
     }
   };
 

@@ -8,7 +8,7 @@ const MessageList = ({messages, checkBox, changeStar}) => {
   return (
     <div>
       {messages.map((message) => (
-        <Message message={message} checkBox={checkBox} changeStar={changeStar} />
+        <Message message={message} checkBox={checkBox} changeStar={changeStar} key={message.id} />
       ))}
     </div>
   );
