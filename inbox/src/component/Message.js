@@ -51,7 +51,7 @@ const Message = ({ message, checkBox, changeStar}) => {
             />
           </div>
           <div className="col-xs-2">
-            <i class={starred()} onClick={() =>changeStar(message.id)}></i>
+            <i className={starred()} onClick={() =>changeStar(message.id)}></i>
           </div>
         </div>
       </div>

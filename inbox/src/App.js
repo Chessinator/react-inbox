@@ -91,9 +91,17 @@ function App() {
     var checkSel = messages.some((message) => message.selected === false);
 
     if (checkSel) {
-      setMessage((prevState) => {
-        return { ...prevState, selected: true };
-      });
+      setMessage(
+        messages.map((message) => {
+          return { ...message, selected: true };
+        })
+      );
+    } else {
+      setMessage(
+        messages.map((message) => {
+          return { ...message, selected: false };
+        })
+      );
     }
   };
 
@@ -105,9 +113,38 @@ function App() {
     );
   };
 
+  const markAsRead = (boolean) => {
+    setMessage(
+      messages.map((message) =>
+        message.selected === true ? { ...message, read: boolean } : message
+      )
+    );
+  };
+
+  const removeMessages = () => {
+    setMessage(messages.filter((message) => message.selected === false));
+  };
+
+  const addLabel =(name) =>{
+    setMessage(messages.map((message) => message.selected === true && !message.labels.includes(name) ? {...message, labels: message.labels.concat(name)} : message))
+  }
+
+  const delLabel = (name) => {
+    setMessage(messages.map((message) => message.selected === true && message.labels.includes(name) ? {...message, labels: message.labels.filter((e) => e !== name)} : message))
+  }
+
+ 
+
   return (
     <div>
-      <Toolbar checkAll={checkAll} />
+      <Toolbar
+        checkAll={checkAll}
+        messages={messages}
+        markAsRead={markAsRead}
+        removeMessages={removeMessages}
+        addLabel={addLabel}
+        delLabel={delLabel}
+      />
       <MessageList
         messages={messages}
         checkBox={checkBox}

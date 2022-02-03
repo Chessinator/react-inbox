@@ -2,9 +2,8 @@ import React from "react";
 
 const MessageLabel = ({label}) => {
 
-console.log(label);
    return (
-  <span class="label label-warning">{label}</span>
+  <span className="label label-warning">{label}</span>
 
   );
  };

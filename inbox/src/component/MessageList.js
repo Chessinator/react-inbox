@@ -3,7 +3,6 @@ import Message from "./Message.js";
 
 const MessageList = ({messages, checkBox, changeStar}) => {
  
-console.log(messages);
   
 
   return (
